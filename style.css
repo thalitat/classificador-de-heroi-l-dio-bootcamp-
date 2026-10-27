@@ -805,6 +805,16 @@ h1 {
     animation: trophy-bounce 0.8s ease-in-out infinite;
 }
 
+.trophy-diamante {
+    --trophy-color: #48c8bd;
+    animation: trophy-shine 1.5s ease-in-out infinite;
+}
+
+.trophy-lendario {
+    --trophy-color: #bd73e8;
+    animation: trophy-pulse 1.1s ease-in-out infinite;
+}
+
 .trophy-platina {
     --trophy-color: #48c8bd;
     animation: trophy-spin 2.2s ease-in-out infinite;
@@ -945,7 +955,7 @@ h1 {
     font-size: 11px;
 }
 
-.ranking-xp {
+.ranking-score {
     color: #123d77;
     font-size: 11px;
     text-align: right;
@@ -995,5 +1005,84 @@ h1 {
     .trophy,
     .trophy-sparkle {
         animation: none;
+    }
+}
+
+header.topbar nav.project-tabs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+header.topbar nav.project-tabs .tab-button {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 8px 16px;
+    border: 2px solid #174b8d;
+    border-radius: 999px;
+    background: rgba(255, 253, 244, 0.9);
+    color: #123d77;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+    cursor: pointer;
+    box-shadow: 0 2px 0 rgba(18, 61, 119, 0.2);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+header.topbar nav.project-tabs .tab-button:hover:not([aria-selected="true"]) {
+    background: #fff4c4;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 0 rgba(18, 61, 119, 0.25);
+}
+
+header.topbar nav.project-tabs .tab-button[aria-selected="true"] {
+    border-color: #174b8d;
+    background: #174b8d;
+    color: #fff;
+    box-shadow: 0 3px 0 #103768;
+}
+
+header.topbar nav.project-tabs .tab-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 0 rgba(18, 61, 119, 0.2);
+}
+
+header.topbar nav.project-tabs .tab-button:focus-visible {
+    outline: 3px solid #176d43;
+    outline-offset: 3px;
+}
+
+.tab-panel[hidden] {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    header.topbar nav.project-tabs {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 6%;
+    }
+
+    header.topbar nav.project-tabs .tab-button {
+        flex: 1;
+        min-width: 0;
+        min-height: 42px;
+        padding: 7px 8px;
+        font-size: 11px;
     }
 }

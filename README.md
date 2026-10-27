@@ -1,24 +1,22 @@
-# Classificador de Nível de Herói
+# Classificador de Herói | Desafios DIO
 
-Projeto desenvolvido para o desafio **Classificador de Nível de Herói** da DIO. Informe o nome e a experiência (XP) do herói para descobrir seu nível e registrar a classificação no ranking local.
+Este projeto reúne **dois classificadores de herói em uma única aplicação web**. Abra `index.html` e use as abas do cabeçalho para alternar entre as experiências:
 
-## Como executar
+- **Classificador por XP:** informe o nome do herói e sua experiência para descobrir o nível alcançado.
+- **Calculadora de partidas rankeadas:** informe vitórias e derrotas para calcular o saldo de vitórias e descobrir o nível competitivo.
 
-1. Baixe ou clone este repositório.
-2. Abra `index.html` em um navegador.
+Cada classificador possui seu próprio formulário, resultado e ranking. Assim, é possível usar os dois desafios na mesma página sem misturar os dados.
 
-Não é necessário instalar dependências nem configurar um servidor.
+## Executar o projeto
 
-## Como usar
+1. Clone ou baixe este repositório.
+2. Abra o arquivo `index.html` em um navegador.
 
-1. Digite o nome do herói.
-2. Informe um valor de XP inteiro e igual ou maior que zero.
-3. Selecione **Descobrir meu nível**.
-4. Consulte o troféu animado e o ranking, ordenado da maior para a menor quantidade de XP.
+Não é necessário instalar dependências nem iniciar um servidor.
 
-O ranking é salvo no armazenamento local do navegador (`localStorage`). Ele fica disponível no mesmo navegador e dispositivo; não é compartilhado entre visitantes ou dispositivos.
+## Classificador por XP
 
-## Faixas de nível
+Digite o nome do herói e uma quantidade inteira de XP igual ou maior que zero. A aplicação apresenta o nível correspondente e registra a classificação no ranking, ordenado da maior para a menor quantidade de XP.
 
 | Experiência (XP) | Nível |
 | --- | --- |
@@ -31,19 +29,45 @@ O ranking é salvo no armazenamento local do navegador (`localStorage`). Ele fic
 | 9.001 a 10.000 | Imortal |
 | 10.001 ou mais | Radiante |
 
+## Calculadora de partidas rankeadas
+
+Digite o nome do herói e informe valores inteiros, iguais ou maiores que zero, para vitórias e derrotas. O saldo é calculado subtraindo as derrotas das vitórias:
+
+```text
+saldo de vitórias = vitórias - derrotas
+```
+
+O nível depende da quantidade de vitórias. O resultado mostra o saldo e o nível, e a classificação é adicionada ao ranking ordenado pelo maior saldo.
+
+| Vitórias | Nível |
+| --- | --- |
+| Até 10 | Ferro |
+| 11 a 20 | Bronze |
+| 21 a 50 | Prata |
+| 51 a 80 | Ouro |
+| 81 a 90 | Diamante |
+| 91 a 100 | Lendário |
+| 101 ou mais | Imortal |
+
+O enunciado original não define a faixa para exatamente 10 vitórias; neste projeto, 10 vitórias são classificadas como **Ferro**.
+
+## Rankings e armazenamento
+
+Os rankings dos dois classificadores são independentes e ficam salvos no `localStorage` do navegador. Os dados permanecem disponíveis no mesmo navegador e dispositivo, mas não são sincronizados com outros dispositivos nem compartilhados entre visitantes.
+
 ## Tecnologias e conceitos
 
 - HTML, CSS e JavaScript puro
-- Variáveis, operadores, laços de repetição e estruturas de decisão
-- Validação de entrada e armazenamento local no navegador
-- Interface responsiva com tema de jogo de plataforma retrô
+- Variáveis, operadores, funções, laços de repetição e estruturas condicionais
+- Validação de entradas e manipulação do DOM
+- Armazenamento local com `localStorage`
+- Interface responsiva, abas acessíveis e animações
 
-## Estrutura
+## Arquivos do projeto
 
-```text
-index.html       Estrutura da página
-style.css        Estilos e animações
-js.js            Classificador, validação e ranking
-README.md        Documentação do projeto
-.vscode/         Configuração para abrir no Chrome pelo VS Code
-```
+| Arquivo | Finalidade |
+| --- | --- |
+| `index.html` | Estrutura da página, formulários e abas |
+| `style.css` | Estilos responsivos e animações |
+| `js.js` | Cálculo dos níveis, validação e rankings |
+| `README.md` | Documentação e instruções |

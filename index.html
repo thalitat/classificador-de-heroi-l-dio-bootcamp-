@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffd84a">
-    <meta name="description" content="Descubra o nível do seu herói de acordo com sua experiência (XP).">
-    <title>Classificador de Herói | Asas do Norte</title>
+    <meta name="description" content="Classifique seu herói por XP ou descubra seu nível e saldo em partidas rankeadas.">
+    <title>Classificador de Herói e Partidas Rankeadas | Asas do Norte</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -18,79 +18,153 @@
             <span class="logo-mark" aria-hidden="true">ᛟ</span>
             <span>ASAS <em>DO NORTE</em></span>
         </a>
-        <nav aria-label="Navegação principal">
-            <a href="#classificador">Classificador</a>
-            <a href="#faixas">Níveis</a>
+        <nav class="project-tabs" role="tablist" aria-label="Projetos">
+            <button class="tab-button" id="xp-tab" type="button" role="tab" aria-selected="true" aria-controls="xp-panel" tabindex="0">Classificador por XP</button>
+            <button class="tab-button" id="ranked-tab" type="button" role="tab" aria-selected="false" aria-controls="ranked-panel" tabindex="-1">Partidas rankeadas</button>
         </nav>
     </header>
 
     <main>
-        <section class="hero" id="inicio">
-            <div class="hero-content">
-                <p class="eyebrow"><span aria-hidden="true"></span> DESAFIO DIO · JORNADA DO HERÓI</p>
-                <h1>Todo herói<br>tem sua <em>jornada.</em></h1>
-                <p class="hero-copy">
-                    Informe seu nome e sua experiência para descobrir
-                    qual nível você alcançou.
-                </p>
+        <div class="tab-panel" id="xp-panel" role="tabpanel" aria-labelledby="xp-tab">
+            <section class="hero" id="inicio">
+                <div class="hero-content">
+                    <p class="eyebrow"><span aria-hidden="true"></span> DESAFIO DIO · JORNADA DO HERÓI</p>
+                    <h1>Todo herói<br>tem sua <em>jornada.</em></h1>
+                    <p class="hero-copy">
+                        Informe o nome do herói e sua experiência para descobrir
+                        qual nível você alcançou.
+                    </p>
 
-                <section class="classifier-card" id="classificador" aria-labelledby="classifier-title">
-                    <p class="card-kicker">SEU PRÓXIMO CAPÍTULO</p>
-                    <h2 id="classifier-title">Classifique seu herói</h2>
-                    <form id="classifier-form" novalidate>
-                        <div class="form-field">
-                            <label for="hero-name">Nome do herói</label>
-                            <input id="hero-name" name="name" type="text" placeholder="Ex.: Arthur" autocomplete="name" required>
+                    <section class="classifier-card" id="classificador" aria-labelledby="classifier-title">
+                        <p class="card-kicker">SEU PRÓXIMO CAPÍTULO</p>
+                        <h2 id="classifier-title">Classifique seu herói</h2>
+                        <form id="classifier-form" novalidate>
+                            <div class="form-field">
+                                <label for="hero-name">Nome do herói</label>
+                                <input id="hero-name" name="name" type="text" placeholder="Ex.: Arthur" autocomplete="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="hero-xp">Experiência (XP)</label>
+                                <input id="hero-xp" name="xp" type="number" min="0" step="1" placeholder="Ex.: 7500" inputmode="numeric" required>
+                                <small>Use um número inteiro igual ou maior que zero.</small>
+                            </div>
+                            <button class="button button-primary" type="submit">Descobrir meu nível <span aria-hidden="true">→</span></button>
+                        </form>
+                        <p class="form-message" id="form-message" role="alert" hidden></p>
+                        <div class="result" id="result" aria-live="polite" hidden>
+                            <div class="trophy" id="trophy" aria-hidden="true"></div>
+                            <p class="result-copy" id="result-copy"></p>
                         </div>
-                        <div class="form-field">
-                            <label for="hero-xp">Experiência (XP)</label>
-                            <input id="hero-xp" name="xp" type="number" min="0" step="1" placeholder="Ex.: 7500" inputmode="numeric" required>
-                            <small>Use um número inteiro igual ou maior que zero.</small>
-                        </div>
-                        <button class="button button-primary" type="submit">Descobrir meu nível <span aria-hidden="true">→</span></button>
-                    </form>
-                    <p class="form-message" id="form-message" role="alert" hidden></p>
-                    <div class="result" id="result" aria-live="polite" hidden>
-                        <div class="trophy" id="trophy" aria-hidden="true"></div>
-                        <p class="result-copy" id="result-copy"></p>
-                    </div>
-                </section>
+                    </section>
 
-                <a class="text-link" href="#faixas">Consultar todas as faixas de nível ↓</a>
-            </div>
-            <p class="hero-caption">CADA CONQUISTA CONTA <span>•</span> 01 / 08</p>
-        </section>
-
-        <section class="levels section-wrap" id="faixas" aria-labelledby="levels-title">
-            <div class="section-kicker">A ESCALA DE EXPERIÊNCIA</div>
-            <div class="section-heading">
-                <h2 id="levels-title">Do primeiro passo ao <em>Radiante</em></h2>
-                <p>Seu nível acompanha a experiência acumulada em sua aventura.</p>
-            </div>
-            <ol class="level-list">
-                <li><span class="level-number">01</span><strong>Ferro</strong><span>Até 999 XP</span></li>
-                <li><span class="level-number">02</span><strong>Bronze</strong><span>1.000 a 2.000 XP</span></li>
-                <li><span class="level-number">03</span><strong>Prata</strong><span>2.001 a 5.000 XP</span></li>
-                <li><span class="level-number">04</span><strong>Ouro</strong><span>5.001 a 7.000 XP</span></li>
-                <li><span class="level-number">05</span><strong>Platina</strong><span>7.001 a 8.000 XP</span></li>
-                <li><span class="level-number">06</span><strong>Ascendente</strong><span>8.001 a 9.000 XP</span></li>
-                <li><span class="level-number">07</span><strong>Imortal</strong><span>9.001 a 10.000 XP</span></li>
-                <li><span class="level-number">08</span><strong>Radiante</strong><span>10.001 XP ou mais</span></li>
-            </ol>
-
-            <section class="ranking" aria-labelledby="ranking-title">
-                <div class="ranking-heading">
-                    <div>
-                        <div class="section-kicker">PLACAR DA AVENTURA</div>
-                        <h3 id="ranking-title">Ranking dos heróis</h3>
-                    </div>
-                    <span class="ranking-note">ORDENADO POR XP</span>
+                    <a class="text-link" href="#faixas-xp">Consultar todas as faixas de nível ↓</a>
                 </div>
-                <p class="storage-message" id="storage-message" role="status" hidden></p>
-                <ol class="ranking-list" id="ranking-list" aria-live="polite"></ol>
-                <p class="ranking-empty" id="ranking-empty">Ainda não há heróis no ranking. Faça sua primeira classificação!</p>
+                <p class="hero-caption">CADA CONQUISTA CONTA <span>•</span> 01 / 08</p>
             </section>
-        </section>
+
+            <section class="levels section-wrap" id="faixas-xp" aria-labelledby="levels-title">
+                <div class="section-kicker">A ESCALA DE EXPERIÊNCIA</div>
+                <div class="section-heading">
+                    <h2 id="levels-title">Do primeiro passo ao <em>Radiante</em></h2>
+                    <p>Seu nível acompanha a experiência acumulada em sua aventura.</p>
+                </div>
+                <ol class="level-list">
+                    <li><span class="level-number">01</span><strong>Ferro</strong><span>Até 999 XP</span></li>
+                    <li><span class="level-number">02</span><strong>Bronze</strong><span>1.000 a 2.000 XP</span></li>
+                    <li><span class="level-number">03</span><strong>Prata</strong><span>2.001 a 5.000 XP</span></li>
+                    <li><span class="level-number">04</span><strong>Ouro</strong><span>5.001 a 7.000 XP</span></li>
+                    <li><span class="level-number">05</span><strong>Platina</strong><span>7.001 a 8.000 XP</span></li>
+                    <li><span class="level-number">06</span><strong>Ascendente</strong><span>8.001 a 9.000 XP</span></li>
+                    <li><span class="level-number">07</span><strong>Imortal</strong><span>9.001 a 10.000 XP</span></li>
+                    <li><span class="level-number">08</span><strong>Radiante</strong><span>10.001 XP ou mais</span></li>
+                </ol>
+
+                <section class="ranking" aria-labelledby="ranking-title">
+                    <div class="ranking-heading">
+                        <div>
+                            <div class="section-kicker">PLACAR DA AVENTURA</div>
+                            <h3 id="ranking-title">Ranking dos heróis</h3>
+                        </div>
+                        <span class="ranking-note">ORDENADO POR XP</span>
+                    </div>
+                    <p class="storage-message" id="storage-message" role="status" hidden></p>
+                    <ol class="ranking-list" id="ranking-list" aria-live="polite"></ol>
+                    <p class="ranking-empty" id="ranking-empty">Ainda não há heróis no ranking. Faça sua primeira classificação!</p>
+                </section>
+            </section>
+        </div>
+
+        <div class="tab-panel" id="ranked-panel" role="tabpanel" aria-labelledby="ranked-tab" hidden>
+            <section class="hero" id="ranked-start">
+                <div class="hero-content">
+                    <p class="eyebrow"><span aria-hidden="true"></span> DESAFIO DIO · PARTIDAS RANKEADAS</p>
+                    <h1>Vitórias que<br>marcam sua <em>jornada.</em></h1>
+                    <p class="hero-copy">
+                        Informe vitórias e derrotas para calcular seu saldo
+                        e descobrir o nível do herói.
+                    </p>
+
+                    <section class="classifier-card" id="ranked-classifier" aria-labelledby="ranked-title">
+                        <p class="card-kicker">CALCULADORA DE PARTIDAS</p>
+                        <h2 id="ranked-title">Classifique seu herói</h2>
+                        <form id="ranked-form" novalidate>
+                            <div class="form-field">
+                                <label for="ranked-hero-name">Nome do herói</label>
+                                <input id="ranked-hero-name" name="name" type="text" placeholder="Ex.: Arthur" autocomplete="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="hero-wins">Vitórias</label>
+                                <input id="hero-wins" name="wins" type="number" min="0" step="1" placeholder="Ex.: 85" inputmode="numeric" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="hero-losses">Derrotas</label>
+                                <input id="hero-losses" name="losses" type="number" min="0" step="1" placeholder="Ex.: 20" inputmode="numeric" required>
+                                <small>Use números inteiros iguais ou maiores que zero.</small>
+                            </div>
+                            <button class="button button-primary" type="submit">Calcular meu nível <span aria-hidden="true">→</span></button>
+                        </form>
+                        <p class="form-message" id="ranked-form-message" role="alert" hidden></p>
+                        <div class="result" id="ranked-result" aria-live="polite" hidden>
+                            <div class="trophy" id="ranked-trophy" aria-hidden="true"></div>
+                            <p class="result-copy" id="ranked-result-copy"></p>
+                        </div>
+                    </section>
+
+                    <a class="text-link" href="#ranked-levels">Consultar as faixas de vitórias ↓</a>
+                </div>
+                <p class="hero-caption">CADA CONQUISTA CONTA <span>•</span> 01 / 07</p>
+            </section>
+
+            <section class="levels section-wrap" id="ranked-levels" aria-labelledby="ranked-levels-title">
+                <div class="section-kicker">A ESCALA DE VITÓRIAS</div>
+                <div class="section-heading">
+                    <h2 id="ranked-levels-title">Do primeiro passo ao <em>Imortal</em></h2>
+                    <p>O nível é definido pela quantidade de vitórias; o saldo é calculado subtraindo as derrotas.</p>
+                </div>
+                <ol class="level-list">
+                    <li><span class="level-number">01</span><strong>Ferro</strong><span>Até 10 vitórias</span></li>
+                    <li><span class="level-number">02</span><strong>Bronze</strong><span>11 a 20 vitórias</span></li>
+                    <li><span class="level-number">03</span><strong>Prata</strong><span>21 a 50 vitórias</span></li>
+                    <li><span class="level-number">04</span><strong>Ouro</strong><span>51 a 80 vitórias</span></li>
+                    <li><span class="level-number">05</span><strong>Diamante</strong><span>81 a 90 vitórias</span></li>
+                    <li><span class="level-number">06</span><strong>Lendário</strong><span>91 a 100 vitórias</span></li>
+                    <li><span class="level-number">07</span><strong>Imortal</strong><span>101 ou mais vitórias</span></li>
+                </ol>
+
+                <section class="ranking" aria-labelledby="ranked-ranking-title">
+                    <div class="ranking-heading">
+                        <div>
+                            <div class="section-kicker">PLACAR DA AVENTURA</div>
+                            <h3 id="ranked-ranking-title">Ranking das partidas</h3>
+                        </div>
+                        <span class="ranking-note">ORDENADO POR SALDO</span>
+                    </div>
+                    <p class="storage-message" id="ranked-storage-message" role="status" hidden></p>
+                    <ol class="ranking-list" id="ranked-ranking-list" aria-live="polite"></ol>
+                    <p class="ranking-empty" id="ranked-ranking-empty">Ainda não há partidas no ranking. Faça sua primeira classificação!</p>
+                </section>
+            </section>
+        </div>
     </main>
 
     <footer class="footer">
@@ -98,7 +172,7 @@
             <span class="logo-mark" aria-hidden="true">ᛟ</span>
             <span>ASAS <em>DO NORTE</em></span>
         </a>
-        <p>Desafio Classificador de Nível de Herói · DIO</p>
+        <p>Desafios de Herói · DIO</p>
     </footer>
 </body>
 </html>
