@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffd84a">
-    <meta name="description" content="Classifique seu herói por XP ou descubra seu nível e saldo em partidas rankeadas.">
-    <title>Classificador de Herói e Partidas Rankeadas | Asas do Norte</title>
+    <meta name="description" content="Explore três desafios DIO: classificação por XP, partidas rankeadas e classes de herói.">
+    <title>Desafios de Herói | Asas do Norte</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
         <nav class="project-tabs" role="tablist" aria-label="Projetos">
             <button class="tab-button" id="xp-tab" type="button" role="tab" aria-selected="true" aria-controls="xp-panel" tabindex="0">Classificador por XP</button>
             <button class="tab-button" id="ranked-tab" type="button" role="tab" aria-selected="false" aria-controls="ranked-panel" tabindex="-1">Partidas rankeadas</button>
+            <button class="tab-button" id="hero-class-tab" type="button" role="tab" aria-selected="false" aria-controls="hero-class-panel" tabindex="-1">Classes de herói</button>
         </nav>
     </header>
 
@@ -163,6 +164,68 @@
                     <ol class="ranking-list" id="ranked-ranking-list" aria-live="polite"></ol>
                     <p class="ranking-empty" id="ranked-ranking-empty">Ainda não há partidas no ranking. Faça sua primeira classificação!</p>
                 </section>
+            </section>
+        </div>
+
+        <div class="tab-panel" id="hero-class-panel" role="tabpanel" aria-labelledby="hero-class-tab" hidden>
+            <section class="hero" id="hero-class-start">
+                <div class="hero-content">
+                    <p class="eyebrow"><span aria-hidden="true"></span> DESAFIO DIO · CLASSES DE UM JOGO</p>
+                    <h1>Escolha seu<br><em>herói.</em></h1>
+                    <p class="hero-copy">
+                        Crie um personagem com nome, idade e classe.
+                        Cada classe tem seu próprio estilo de ataque.
+                    </p>
+
+                    <section class="classifier-card" aria-labelledby="hero-class-title">
+                        <p class="card-kicker">ESCREVENDO AS CLASSES DE UM JOGO</p>
+                        <h2 id="hero-class-title">Monte seu personagem</h2>
+                        <form id="hero-class-form" novalidate>
+                            <div class="form-field">
+                                <label for="character-name">Nome do herói</label>
+                                <input id="character-name" name="name" type="text" placeholder="Ex.: Lyra" autocomplete="off" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="character-age">Idade</label>
+                                <input id="character-age" name="age" type="number" min="0" step="1" placeholder="Ex.: 25" inputmode="numeric" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="character-type">Classe do herói</label>
+                                <select id="character-type" name="type" required>
+                                    <option value="">Selecione uma classe</option>
+                                    <option value="mago">Mago</option>
+                                    <option value="guerreiro">Guerreiro</option>
+                                    <option value="monge">Monge</option>
+                                    <option value="ninja">Ninja</option>
+                                </select>
+                            </div>
+                            <button class="button button-primary" type="submit">Executar ataque <span aria-hidden="true">→</span></button>
+                        </form>
+                        <p class="form-message" id="hero-class-message" role="alert" hidden></p>
+                        <div class="result" id="hero-class-result" aria-live="polite" hidden>
+                            <div class="trophy" aria-hidden="true"><span class="attack-icon">⚔</span></div>
+                            <div>
+                                <p class="character-details" id="hero-class-details"></p>
+                                <p class="result-copy" id="hero-class-result-copy"></p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <p class="hero-caption">CADA HERÓI TEM SEU ESTILO <span>•</span> 01 / 04</p>
+            </section>
+
+            <section class="levels section-wrap" aria-labelledby="hero-class-levels-title">
+                <div class="section-kicker">QUATRO CAMINHOS, QUATRO ATAQUES</div>
+                <div class="section-heading">
+                    <h2 id="hero-class-levels-title">Qual será o seu <em>estilo?</em></h2>
+                    <p>O ataque é escolhido automaticamente de acordo com a classe do personagem.</p>
+                </div>
+                <ol class="level-list">
+                    <li><span class="level-number">01</span><strong>Mago</strong><span>Ataca usando magia</span></li>
+                    <li><span class="level-number">02</span><strong>Guerreiro</strong><span>Ataca usando espada</span></li>
+                    <li><span class="level-number">03</span><strong>Monge</strong><span>Ataca usando artes marciais</span></li>
+                    <li><span class="level-number">04</span><strong>Ninja</strong><span>Ataca usando shuriken</span></li>
+                </ol>
             </section>
         </div>
     </main>

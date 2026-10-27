@@ -21,6 +21,15 @@ const listaRankingRank = document.querySelector("#ranked-ranking-list");
 const rankingVazioRank = document.querySelector("#ranked-ranking-empty");
 const mensagemArmazenamentoRank = document.querySelector("#ranked-storage-message");
 
+const formularioClasseHeroi = document.querySelector("#hero-class-form");
+const campoNomePersonagem = document.querySelector("#character-name");
+const campoIdadePersonagem = document.querySelector("#character-age");
+const campoTipoPersonagem = document.querySelector("#character-type");
+const mensagemClasseHeroi = document.querySelector("#hero-class-message");
+const resultadoClasseHeroi = document.querySelector("#hero-class-result");
+const detalhesClasseHeroi = document.querySelector("#hero-class-details");
+const textoAtaqueClasseHeroi = document.querySelector("#hero-class-result-copy");
+
 let rankingXp = carregarRankingXp();
 let rankingRank = carregarRankingRank();
 renderizarRankingXp();
@@ -94,6 +103,39 @@ formularioRank.addEventListener("submit", (evento) => {
     renderizarRankingRank();
 });
 
+formularioClasseHeroi.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    mensagemClasseHeroi.hidden = true;
+    resultadoClasseHeroi.hidden = true;
+
+    const nome = campoNomePersonagem.value.trim();
+    const idade = Number(campoIdadePersonagem.value);
+    const tipo = campoTipoPersonagem.value;
+
+    if (!nome) {
+        mostrarErro(mensagemClasseHeroi, "Informe o nome do herói.");
+        campoNomePersonagem.focus();
+        return;
+    }
+
+    if (campoIdadePersonagem.value.trim() === "" || !Number.isInteger(idade) || idade < 0) {
+        mostrarErro(mensagemClasseHeroi, "Informe uma idade inteira e igual ou maior que zero.");
+        campoIdadePersonagem.focus();
+        return;
+    }
+
+    if (!["mago", "guerreiro", "monge", "ninja"].includes(tipo)) {
+        mostrarErro(mensagemClasseHeroi, "Selecione uma classe válida para o herói.");
+        campoTipoPersonagem.focus();
+        return;
+    }
+
+    const heroi = new Heroi(nome, idade, tipo);
+    detalhesClasseHeroi.textContent = `${heroi.nome}, ${heroi.idade} anos`;
+    textoAtaqueClasseHeroi.textContent = heroi.atacar();
+    resultadoClasseHeroi.hidden = false;
+});
+
 document.querySelectorAll('[role="tab"]').forEach((tab) => {
     tab.addEventListener("click", () => ativarAba(tab));
     tab.addEventListener("keydown", (evento) => {
@@ -143,6 +185,25 @@ function calcularNivelXp(xp) {
         if (xp <= faixa.maximo) {
             return faixa.nivel;
         }
+    }
+}
+
+class Heroi {
+    constructor(nome, idade, tipo) {
+        this.nome = nome;
+        this.idade = idade;
+        this.tipo = tipo;
+    }
+
+    atacar() {
+        const ataques = {
+            mago: "magia",
+            guerreiro: "espada",
+            monge: "artes marciais",
+            ninja: "shuriken"
+        };
+
+        return `o ${this.tipo} atacou usando ${ataques[this.tipo]}`;
     }
 }
 

@@ -1,22 +1,17 @@
-# Classificador de Herói | Desafios DIO
+# Desafios de Herói | DIO
 
-Este projeto reúne **dois classificadores de herói em uma única aplicação web**. Abra `index.html` e use as abas do cabeçalho para alternar entre as experiências:
+Este projeto reúne **três desafios da DIO em uma única aplicação web**. Abra `index.html` e use as abas do cabeçalho para alternar entre os classificadores por XP, partidas rankeadas e classes de herói. Cada desafio tem seu próprio formulário e resultado.
 
-- **Classificador por XP:** informe o nome do herói e sua experiência para descobrir o nível alcançado.
-- **Calculadora de partidas rankeadas:** informe vitórias e derrotas para calcular o saldo de vitórias e descobrir o nível competitivo.
-
-Cada classificador possui seu próprio formulário, resultado e ranking. Assim, é possível usar os dois desafios na mesma página sem misturar os dados.
-
-## Executar o projeto
+## Como executar
 
 1. Clone ou baixe este repositório.
-2. Abra o arquivo `index.html` em um navegador.
+2. Abra `index.html` em um navegador.
 
-Não é necessário instalar dependências nem iniciar um servidor.
+Não é necessário instalar dependências nem configurar um servidor.
 
-## Classificador por XP
+## 1. Classificador de Nível de Herói
 
-Digite o nome do herói e uma quantidade inteira de XP igual ou maior que zero. A aplicação apresenta o nível correspondente e registra a classificação no ranking, ordenado da maior para a menor quantidade de XP.
+Informe o nome do herói e uma quantidade inteira de XP igual ou maior que zero. A aplicação mostra o nível alcançado e registra o herói no ranking local, ordenado da maior para a menor quantidade de XP.
 
 | Experiência (XP) | Nível |
 | --- | --- |
@@ -29,15 +24,9 @@ Digite o nome do herói e uma quantidade inteira de XP igual ou maior que zero. 
 | 9.001 a 10.000 | Imortal |
 | 10.001 ou mais | Radiante |
 
-## Calculadora de partidas rankeadas
+## 2. Calculadora de partidas Rankeadas
 
-Digite o nome do herói e informe valores inteiros, iguais ou maiores que zero, para vitórias e derrotas. O saldo é calculado subtraindo as derrotas das vitórias:
-
-```text
-saldo de vitórias = vitórias - derrotas
-```
-
-O nível depende da quantidade de vitórias. O resultado mostra o saldo e o nível, e a classificação é adicionada ao ranking ordenado pelo maior saldo.
+Informe o nome do herói e quantidades inteiras de vitórias e derrotas, iguais ou maiores que zero. O saldo é calculado pela fórmula `vitórias - derrotas`, e o nível é definido pela quantidade de vitórias. O resultado aparece na página e a classificação entra no ranking ordenado pelo saldo.
 
 | Vitórias | Nível |
 | --- | --- |
@@ -49,25 +38,39 @@ O nível depende da quantidade de vitórias. O resultado mostra o saldo e o nív
 | 91 a 100 | Lendário |
 | 101 ou mais | Imortal |
 
-O enunciado original não define a faixa para exatamente 10 vitórias; neste projeto, 10 vitórias são classificadas como **Ferro**.
+O enunciado não define o nível para exatamente 10 vitórias; neste projeto, 10 vitórias são classificadas como **Ferro**.
+
+## 3. Escrevendo as classes de um Jogo
+
+Crie um herói informando nome, idade e tipo. O projeto instancia um objeto da classe `Heroi`; seu método `atacar()` escolhe a mensagem de ataque conforme o tipo:
+
+| Tipo | Ataque |
+| --- | --- |
+| Mago | Magia |
+| Guerreiro | Espada |
+| Monge | Artes marciais |
+| Ninja | Shuriken |
+
+Por exemplo, um mago exibe **“o mago atacou usando magia”**. A idade deve ser um número inteiro igual ou maior que zero.
 
 ## Rankings e armazenamento
 
-Os rankings dos dois classificadores são independentes e ficam salvos no `localStorage` do navegador. Os dados permanecem disponíveis no mesmo navegador e dispositivo, mas não são sincronizados com outros dispositivos nem compartilhados entre visitantes.
+Os rankings de XP e de partidas são independentes e salvos no `localStorage` do navegador. Os dados permanecem disponíveis no mesmo navegador e dispositivo, sem sincronização entre dispositivos. O desafio de classes cria o personagem e exibe seu ataque; ele não adiciona personagens a esses rankings.
 
 ## Tecnologias e conceitos
 
 - HTML, CSS e JavaScript puro
 - Variáveis, operadores, funções, laços de repetição e estruturas condicionais
-- Validação de entradas e manipulação do DOM
+- Classes e objetos
+- Validação de entrada e manipulação do DOM
 - Armazenamento local com `localStorage`
-- Interface responsiva, abas acessíveis e animações
+- Interface responsiva, navegação por abas acessível e animações
 
 ## Arquivos do projeto
 
 | Arquivo | Finalidade |
 | --- | --- |
-| `index.html` | Estrutura da página, formulários e abas |
+| `index.html` | Estrutura da página, abas e formulários dos desafios |
 | `style.css` | Estilos responsivos e animações |
-| `js.js` | Cálculo dos níveis, validação e rankings |
+| `js.js` | Classificadores, classe `Heroi`, validação e rankings |
 | `README.md` | Documentação e instruções |

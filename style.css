@@ -179,7 +179,8 @@ h1 {
     font-weight: 700;
 }
 
-.form-field input {
+.form-field input,
+.form-field select {
     width: 100%;
     min-height: 44px;
     padding: 10px 12px;
@@ -191,7 +192,8 @@ h1 {
     font-size: 14px;
 }
 
-.form-field input:focus {
+.form-field input:focus,
+.form-field select:focus {
     border-color: var(--copper);
     outline: 2px solid rgba(211, 138, 85, 0.25);
 }
@@ -551,14 +553,16 @@ h1 em,
     color: #173c70;
 }
 
-.form-field input {
+.form-field input,
+.form-field select {
     border: 2px solid #8da7c2;
     border-radius: 5px;
     background: #fff;
     color: #173c70;
 }
 
-.form-field input:focus {
+.form-field input:focus,
+.form-field select:focus {
     border-color: #176d43;
     outline-color: rgba(23, 109, 67, 0.2);
 }
@@ -715,6 +719,22 @@ h1 {
     color: #173c70;
     font-size: 13px;
     font-weight: 700;
+}
+
+.character-details {
+    margin: 0 0 4px;
+    color: #526b87;
+    font-size: 11px;
+}
+
+.attack-icon {
+    display: grid;
+    width: 72px;
+    height: 72px;
+    place-items: center;
+    color: #e83c35;
+    font-size: 38px;
+    text-shadow: 3px 3px 0 #ffd84a;
 }
 
 .trophy {
@@ -1082,7 +1102,8 @@ header.topbar nav.project-tabs .tab-button:focus-visible {
         flex: 1;
         min-width: 0;
         min-height: 42px;
-        padding: 7px 8px;
-        font-size: 11px;
+        padding: 7px 5px;
+        font-size: 10px;
+        line-height: 1.2;
     }
 }
